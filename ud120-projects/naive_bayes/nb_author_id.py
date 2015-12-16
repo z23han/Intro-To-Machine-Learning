@@ -41,7 +41,7 @@ Y = np.array(labels_train)
 
 clf = GaussianNB()
 
-clf.fit(X, Y)
+clf.fit(features_train, labels_train)
 pred = clf.predict(features_test)
 
 
