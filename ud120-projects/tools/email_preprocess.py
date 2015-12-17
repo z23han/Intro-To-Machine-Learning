@@ -39,7 +39,7 @@ def preprocess(words_file = "../tools/word_data.pkl", authors_file="../tools/ema
 
     ### test_size is the percentage of events assigned to the test set
     ### (remainder go into training)
-    features_train, features_test, labels_train, labels_test = cross_validation.train_test_split(word_data, authors, test_size=0.5, random_state=42)
+    features_train, features_test, labels_train, labels_test = cross_validation.train_test_split(word_data, authors, test_size=0.1, random_state=42)
 
 
 
@@ -53,7 +53,7 @@ def preprocess(words_file = "../tools/word_data.pkl", authors_file="../tools/ema
 
     ### feature selection, because text is super high dimensional and 
     ### can be really computationally chewy as a result
-    selector = SelectPercentile(f_classif, percentile=10)
+    selector = SelectPercentile(f_classif, percentile=1)
     selector.fit(features_train_transformed, labels_train)
     features_train_transformed = selector.transform(features_train_transformed).toarray()
     features_test_transformed  = selector.transform(features_test_transformed).toarray()

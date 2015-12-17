@@ -20,6 +20,8 @@ from email_preprocess import preprocess
 features_train, features_test, labels_train, labels_test = preprocess()
 
 
+print len(features_train[0])
+
 #########################################################
 ### your code goes here ###
 X = features_train
