@@ -16,7 +16,14 @@
 """
 
 import pickle
+from pprint import pprint
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
+def get_num_of_features():
+    num_of_features = 0
+    for key in enron_data.keys():
+        if enron_data[key]['poi']:
+            num_of_features += 1
+    return num_of_features
 
