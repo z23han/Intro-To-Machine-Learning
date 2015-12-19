@@ -27,3 +27,19 @@ def get_num_of_features():
             num_of_features += 1
     return num_of_features
 
+import sys
+sys.path.insert(0, '..\\final_project')
+
+def get_num_of_pois():
+    fin = open('..\\final_project\\poi_names.txt', 'r')
+    num_of_names = 0
+    for l in fin.readlines():
+        if '(y)' in l or '(n)' in l:
+            num_of_names += 1
+    fin.close()
+    return num_of_names
+
+
+pprint(enron_data['LAY KENNETH L'])
+pprint(enron_data['SKILLING JEFFREY K'])
+pprint(enron_data['FASTOW ANDREW S'])
