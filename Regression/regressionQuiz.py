@@ -38,6 +38,11 @@ intercept = (reg.intercept_)[0]
 #test_score = 0. ### fill in the line of code to get the right value
 test_score = reg.score(ages_test, net_worths_test)
 
+print len(ages_test)
+print len(net_worths_test)
+print ages_test
+print net_worths_test
+
 ### get the score on the training data
 #training_score = 0. ### fill in the line of code to get the right value
 training_score = reg.score(ages_train, net_worths_train)
