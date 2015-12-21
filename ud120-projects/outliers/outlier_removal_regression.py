@@ -84,3 +84,6 @@ else:
 
 coef = reg.coef_
 print coef
+
+score = reg.score(ages_test, net_worths_test)
+print score
