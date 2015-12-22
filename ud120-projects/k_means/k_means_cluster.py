@@ -5,15 +5,12 @@
 """
 
 
-
-
 import pickle
 import numpy
 import matplotlib.pyplot as plt
 import sys
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
-
 
 
 
@@ -48,11 +45,18 @@ data_dict.pop("TOTAL", 0)
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
 feature_1 = "salary"
 feature_2 = "exercised_stock_options"
+feature_3 = "total_payments"
 poi  = "poi"
 features_list = [poi, feature_1, feature_2]
 data = featureFormat(data_dict, features_list )
 poi, finance_features = targetFeatureSplit( data )
 
+test_data = []
+for i in range(len(data[:,1])):
+    if data[:,1][i] != 0:
+        test_data.append(data[:,1][i])
+print max(test_data)
+print min(test_data)
 
 ### in the "clustering with 3 features" part of the mini-project,
 ### you'll want to change this line to 
@@ -65,6 +69,9 @@ plt.show()
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
 
+from sklearn import cluster
+clf = cluster.KMeans()
+clf.fit(data)
 
 
 
