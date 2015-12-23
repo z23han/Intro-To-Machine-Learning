@@ -55,8 +55,7 @@ test_data = []
 for i in range(len(data[:,1])):
     if data[:,1][i] != 0:
         test_data.append(data[:,1][i])
-print max(test_data)
-print min(test_data)
+
 
 ### in the "clustering with 3 features" part of the mini-project,
 ### you'll want to change this line to 
@@ -69,11 +68,19 @@ plt.show()
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
 
-from sklearn import cluster
-clf = cluster.KMeans()
-clf.fit(data)
+from sklearn import preprocessing
+from pprint import pprint
+new_data1 = finance_features
 
+new_data = numpy.append(new_data1, numpy.array([200000., 1000000.]))
+scaler = preprocessing.MinMaxScaler()
+X_rescaled = scaler.fit_transform(new_data)
 
+data_print1 = list(new_data)
+rescaled_print1 = list(X_rescaled)
+
+pprint(data_print1)
+pprint(rescaled_print1)
 
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file
