@@ -42,15 +42,19 @@ pred = clf.predict(features_test)
 from sklearn.metrics import accuracy_score
 acc = accuracy_score(pred, labels_test)
 
+print acc
+
 feature_number = 0
 
 feature_imp = clf.feature_importances_
+all_words = vectorizer.get_feature_names()
 for i in range(len(feature_imp)):
     if feature_imp[i] > 0.2:
         feature_number = i
         print i
         print feature_imp[i]
+        print all_words[feature_number]
 
-all_words = vectorizer.get_feature_names()
+
 print len(all_words)
 print all_words[feature_number]
