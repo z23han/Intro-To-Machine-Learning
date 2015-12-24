@@ -42,7 +42,7 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
         ### only look at first 200 emails when developing
         ### once everything is working, remove this line to run over full dataset
         temp_counter += 1
-        if temp_counter < 200:
+        if temp_counter >= 0:
             path = os.path.join('C:\Users\Han\Desktop', path[:-1])
             #print path
             email = open(path, "r")
@@ -73,11 +73,18 @@ print "emails processed"
 from_sara.close()
 from_chris.close()
 
-pickle.dump( word_data, open("your_word_data.pkl", "w") )
-pickle.dump( from_data, open("your_email_authors.pkl", "w") )
+#pickle.dump( word_data, open("your_word_data.pkl", "w") )
+#pickle.dump( from_data, open("your_email_authors.pkl", "w") )
 
 ### in Part 4, do TfIdf vectorization here
+from sklearn.feature_extraction.text import TfidfVectorizer
+import numpy as np
 
+vect = TfidfVectorizer(stop_words="english")
+vectorized_data = vect.fit_transform(word_data)
 
-
+print len(vect.get_feature_names())
+names = vect.get_feature_names()
+print names[34597]
+print names[34596]
 
